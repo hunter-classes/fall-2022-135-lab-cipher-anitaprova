@@ -1,9 +1,10 @@
 #include <iostream>
-
-
-#include "funcs.h"
+#include "caesar.h"
+#include "solve.h"
 
 int main()
 {
-  return 0;
+  	encryptCaesar("but i need to, tell you, something my heart just cant be faithful for long i swear ill only make you cry", 3);
+	
+	return 0;
 }
