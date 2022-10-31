@@ -1,7 +1,7 @@
 main: main.o caesar.o solve.o
 	g++ -o main main.o caesar.o
 
-main.o: main.cpp caesar.h vigenere.h decrypt.h
+main.o: main.cpp caesar.h
 	g++ -c main.cpp 
 
 caesar.o: caesar.cpp caesar.h
