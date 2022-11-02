@@ -81,11 +81,13 @@ std::vector<double> shift(std::string str, int shift) {
 	return vec;
 }
 
-/*double distance() {
-	for (int i = 0; i < 25; i++) {
-		
+double distance(std::vector<double> v1, std::vector<double> v2) { //distance between two vectors 
+	double distance = 0.0; 
+	for (int i = 0; i < v1.size(); i++) {
+		distance += pow(v2[i] - v1[i], 2); // get all distance first
 	}
-}*/
+	return sqrt(distance);
+}
 
 std::string solve(std::string encrypted_string) {
 	std::vector<double> encrypted = freq(encrypted_string);
@@ -93,9 +95,14 @@ std::string solve(std::string encrypted_string) {
 	
 	print(encrypted);
 	//print(file);
+	
+	double d = 0.0;
 
-
-
-	std::string decrypted;	
+	for (int i = 0; i < 25; i++) {
+		
+		
+	}
+	
+	
 	return decrypted;
 }
