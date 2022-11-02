@@ -1,7 +1,7 @@
 main: main.o caesar.o solve.o
-	g++ -o main main.o caesar.o
+	g++ -o main main.o caesar.o solve.o
 
-main.o: main.cpp caesar.h
+main.o: main.cpp caesar.h solve.h
 	g++ -c main.cpp 
 
 caesar.o: caesar.cpp caesar.h
@@ -16,4 +16,4 @@ tests: tests.o caesar.o solve.o
 tests.o: tests.cpp doctest.h caesar.h solve.h
 
 clean:
-	rm -f main tests test-ascii main.o tests.o test-ascii.o caesar.o
+	rm -f main tests test-ascii main.o tests.o test-ascii.o caesar.o solve.o

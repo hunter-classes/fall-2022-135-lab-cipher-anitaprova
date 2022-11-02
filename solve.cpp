@@ -19,7 +19,7 @@ std::string solve(std::string encrypted_string) {
 		}
 	}
 
-	for (int i = 0; i < letters.size(); i++) {
+	for (int i = 0; i < letters.size(); i++) { //prints the frequency of the letters
 		std::cout << alphabet[i] << ": " << letters[i] << std::endl;
 	}
 

@@ -5,10 +5,10 @@
 
 int main()
 {
-	std::string str = encryptCaesar("The Song of Achilles", 3);
+	std::string str = encryptCaesar("the song of achilles", 3);
 	std::cout << "Encrypted Text: " << str << std::endl;
 
 
-	solve(str);	
+	std::cout << solve(str);	
 	return 0;
 }
