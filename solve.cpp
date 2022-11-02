@@ -12,85 +12,90 @@ int capital(char c) {
 	return c;
 }
 
+std::vector<double> file_freq() { //sets the file freq
+	std::vector<char> alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+	std::vector<double> file(26);
+	
+	for (int i = 0; i < file.size(); i++ ) {
+                file[i] = 0.0; //initializing the values
+        }
+
+	std::ifstream in_file("The_Song_of_Achilles.txt");
+
+        int file_count = 0;
+        std::string line;
+        while(getline(in_file, line)) {
+                for (int i = 0; i < line.length(); i++) {
+                        for(int j = 0; j < alphabet.size(); j++) {
+                                if (capital(line[i]) == alphabet[j]) {
+                                        file[j]++;
+                                        file_count++;
+                                }
+                        }
+                }
+        }
+
+        for (int i = 0; i < file.size(); i++) {
+                file[i] = file[i]/file_count;
+        }
+	return file;
+}
+
+std::vector<double> freq(std::string str) { //makes a vector and gives the freq of the string 
+	std::vector<char> alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+	std::vector<double> letters(26);
+	
+	for (int i = 0; i < letters.size(); i++ ) {
+                letters[i] = 0.0; //initializing the values
+        }
+
+        int letters_count = 0; //counting
+        for (int i = 0; i < str.length(); i++) {
+                for(int j = 0; j < alphabet.size(); j++) {
+                        if (capital(str[i]) == alphabet[j]) {
+                                letters[j]++;
+                                letters_count++;
+                        }
+                }
+        }
+
+        for(int i = 0; i < letters.size(); i++) { //getting freq
+                letters[i] = letters[i]/letters_count;
+        }
+	return letters;
+}
+
 void print(std::vector<double> vec) {
+	std::cout << "BEG" << std::endl;
 	for (int i = 0; i < vec.size(); i++) {
 		std::cout << vec[i] << std::endl;
 	}
+	std::cout << "END" << std::endl;
 }
 
-std::vector<double> shift(std::vector<double> vec, int shift) {
-	std::vector<double> output(vec.size());
-	for (int i = 0; i < vec.size(); i++) {
-		output[i] = shiftChar(vec[i], shift);
-	}
+std::vector<double> shift(std::string str, int shift) {
+	std::string output; //first shift the encrypted string
+	output = encryptCaesar(str, shift);	
+	std::vector<double> vec = freq(output); //then get the frequency of the shifted vector
 	
-	return output;
+	return vec;
 }
-
 
 /*double distance() {
-	
+	for (int i = 0; i < 25; i++) {
+		
+	}
 }*/
 
 std::string solve(std::string encrypted_string) {
-	std::vector<char> alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-
-	std::vector<double> letters(26);
-	std::vector<double> file(26);
-
-	for (int i = 0; i < letters.size(); i++ ) {
-		file[i] = 0.0;
-		letters[i] = 0.0; //initializing the values
-	}
+	std::vector<double> encrypted = freq(encrypted_string);
+	std::vector<double> file = file_freq();
 	
-	int letters_count = 0;
-	for (int i = 0; i < encrypted_string.length(); i++) {
-		for(int j = 0; j < alphabet.size(); j++) {
-			if (capital(encrypted_string[i]) == alphabet[j]) {
-				letters[j]++;
-				letters_count++;
-			}
-		}
-	}
+	print(encrypted);
+	//print(file);
 
-	for(int i = 0; i < letters.size(); i++) { //getting freq
-		letters[i] = letters[i]/letters_count;
-	}	
-	
-	std::ifstream in_file("The_Song_of_Achilles.txt");
 
-	int file_count = 0;
-	std::string line;
-	while(getline(in_file, line)) {
-		for (int i = 0; i < line.length(); i++) {
-                	for(int j = 0; j < alphabet.size(); j++) {
-                        	if (capital(line[i]) == alphabet[j]) {
-                                	file[j]++;
-					file_count++;
-                        	}
-                	}
-        	}	
-	}
 
-	for (int i = 0; i < file.size(); i++) { //freq
-		file[i] = file[i]/file_count;
-	}
-	
-	print(letters);
-	print(file);
-	std::vector<double> 
-
-	//finding smallest distance
-	double d;
-	std::string decrypted;
-	for (int i = 0; i < letters.size(); i++) {
-		for (int j = 0; j < file.size(); j++) {
-			/*double distance = distance(letter[i], file[i]);
-			if (distance < d) {
-				d = distance;
-			}*/
-		}
-	}
-	
+	std::string decrypted;	
 	return decrypted;
 }
