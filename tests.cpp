@@ -28,5 +28,12 @@ TEST_CASE("solve") {
 	CHECK(solve("Uhx mi nbcm cm Wblcmngum Uhx qbun bupy sio xihy? Uhinbyl syul ipyl Uhx u hyq ihy domn vyaoh Uhx mi nbcm cm Wblcmngum C bijy sio bux zoh Nby hyul uhx nby xyul ihym Nby ifx uhx nby sioha U pyls Gylls Wblcmngum Uhx u Bujjs Hyq Syul Fyn'm bijy cn'm u aiix ihy Qcnbion uhs zyul") == "And so this is Christmas And what have you done? Another year over And a new one just begun And so this is Christmas I hope you had fun The near and the dear ones The old and the young A very Merry Christmas And a Happy New Year Let's hope it's a good one Without any fear");
 
 	CHECK(solve("Gr'q kyigle wms apw ctcpw rgkc Wms egtc wmsp jmtc rm kc rfgq uyw Qywgle wms'b uygr dmp kc rm qryw G ilmu gr fsprq wms Zsr G lccb rm rcjj wms qmkcrfgle Kw fcypr hsqr ayl'r zc dygrfdsj dmp jmle G qucyp G'jj mljw kyic wms apw") == "It's making you cry every time You give your love to me this way Saying you'd wait for me to stay I know it hurts you But I need to tell you something My heart just can't be faithful for long I swear I'll only make you cry");
+
+	CHECK(solve(encryptCaesar("boss makes a dollar, i make a dime, that's why i cry on company time", 7)) == "boss makes a dollar, i make a dime, that's why i cry on company time");
+
+	CHECK(solve(encryptCaesar("And I'm sick of waiting patiently for someone that won't even arrive", 18)) == "And I'm sick of waiting patiently for someone that won't even arrive");
+
+	CHECK(solve(encryptCaesar("There's no banquet in this world that doesn't come to an end.", 25)) == "There's no banquet in this world that doesn't come to an end.");
+
 }
 
