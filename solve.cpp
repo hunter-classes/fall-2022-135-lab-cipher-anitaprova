@@ -73,10 +73,10 @@ void print(std::vector<double> vec) {
 	std::cout << "END" << std::endl;
 }
 
-std::vector<double> shift(std::string str, int shift) {
-	std::string output; //first shift the encrypted string
+std::vector<double> shift(std::string str, int shift) { //shifts then finds freq
+	std::string output;
 	output = encryptCaesar(str, shift);	
-	std::vector<double> vec = freq(output); //then get the frequency of the shifted vector
+	std::vector<double> vec = freq(output);
 	
 	return vec;
 }
@@ -90,19 +90,28 @@ double distance(std::vector<double> v1, std::vector<double> v2) { //distance bet
 }
 
 std::string solve(std::string encrypted_string) {
-	std::vector<double> encrypted = freq(encrypted_string);
+	//std::vector<double> encrypted = freq(encrypted_string);
 	std::vector<double> file = file_freq();
 	
-	print(encrypted);
+	//print(encrypted);
 	//print(file);
 	
-	double d = 0.0;
+	double min_distance = 0.0;
+	int final_shift = 0; //stores correct shift to decipher
+	for (int i = 0; i < 26; i++) {
+		std::vector<double> temp = shift(encrypted_string, i);
+		double temp_distance = distance(temp, file);	
+		
+		if (i == 0) { //sets an intial value for min_distance so it isnt 0.0
+			min_distance = temp_distance; 
+		}
 
-	for (int i = 0; i < 25; i++) {
-		
-		
+		if(temp_distance < min_distance) {
+			min_distance = temp_distance;
+			final_shift = i;
+		}
 	}
 	
-	
+	std::string decrypted = encryptCaesar(encrypted_string, final_shift);
 	return decrypted;
 }

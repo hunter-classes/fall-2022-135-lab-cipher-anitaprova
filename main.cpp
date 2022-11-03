@@ -9,6 +9,6 @@ int main()
 	std::cout << "Encrypted Text: " << str << std::endl;
 
 
-	std::cout << solve(str);	
+	std::cout << "Decrypted Text: " << solve(str) << std::endl;	
 	return 0;
 }
