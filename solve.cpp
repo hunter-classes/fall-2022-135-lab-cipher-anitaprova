@@ -65,14 +65,6 @@ std::vector<double> freq(std::string str) { //makes a vector and gives the freq 
 	return letters;
 }
 
-void print(std::vector<double> vec) {
-	std::cout << "BEG" << std::endl;
-	for (int i = 0; i < vec.size(); i++) {
-		std::cout << vec[i] << std::endl;
-	}
-	std::cout << "END" << std::endl;
-}
-
 std::vector<double> shift(std::string str, int shift) { //shifts then finds freq
 	std::string output;
 	output = encryptCaesar(str, shift);	
@@ -90,11 +82,7 @@ double distance(std::vector<double> v1, std::vector<double> v2) { //distance bet
 }
 
 std::string solve(std::string encrypted_string) {
-	//std::vector<double> encrypted = freq(encrypted_string);
 	std::vector<double> file = file_freq();
-	
-	//print(encrypted);
-	//print(file);
 	
 	double min_distance = 0.0;
 	int final_shift = 0; //stores correct shift to decipher
